@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Arraial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h4>Onde</h4>
+        <h4>Quando</h4>
+        <h4>Presentes</h4>
+    </header>
+    <section class="main">
+        <div class="main__home">
+            <h5 style="margin: 1.5rem auto 1.5rem auto" class="text--pink text--wrap text--center" id="greeting"></h5>
+            <div class="main__home__square">
+                <hr>
+                </hr>
+                <h1>O Arraial</h1>
+                <h4>do Daniel e da Margarida</h4>
+                <hr>
+                </hr>
+            </div>
+            <button class="main__home__confirm-btn">Confirmar</button>
+            <img class="main__home__birds" src="./image.png" alt="Birds">
+        </div>
+    </section>
+</body>
+<script>
+    const GUESTS = {
+        'paula': "Mamã",
+        'luis': "Luís",
+        'nuno': "Papá",
+        'alice': "Alice",
+        'nuno-miguel': 'Miguel',
+        'rozzy': 'Rozzy',
+        'natercia': 'Natércia',
+        'joao-paulo': 'João',
+        'sofia': 'Sofia',
+        'jorge': 'Jorge',
+        'paula-monteiro': 'Mamã',
+        'gusto': 'Papá',
+        'vovo': 'Vovó',
+        'tiago': 'Tiago',
+        'carlos': 'Carlos',
+        'tuxa': 'Tuxa',
+        'bela': 'Bela',
+        'joao-eng': 'João',
+        'rui': 'Rui',
+        'nani': 'Nani',
+        'miguel': 'Miguel',
+        'joao': 'João',
+        'beatriz': 'Beatriz',
+        'carina': 'Carina',
+        'hugo': 'Hugo',
+        'paulo': 'Paulo',
+        'raquel': 'Raquel',
+        'andre': 'André',
+        'joana': 'Joana',
+        'margarida': 'Margarida',
+        'mariana': 'Mariana',
+        'mimi': 'Mimi',
+        'mica': 'Micá',
+        'iolanda': 'Iolanda',
+        'ricardo': 'Ricardo',
+        'carlota': 'Carlota',
+        'andreia': 'Andreia',
+        'fernando': 'Fernando',
+        'lu': 'Lu',
+        'alex': 'Alex',
+        'catarina': 'Catarina'
+    }
+    function greetGuests() {
+        const guests = new URLSearchParams(window.location.search).get('guests').split(',');
+        let guestNames = [];
+        for (let param of guests.values()) {
+            if (GUESTS[param]) {
+                guestNames.push(GUESTS[param]);
+            }
+        }
+        document.getElementById('greeting').textContent =
+            `Olá, ${guestNames.join(' e ')}\nFicaremos muito felizes por vos receber`;
+    }
+    greetGuests()
+</script>
+
+</html>
