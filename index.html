@@ -11,11 +11,12 @@
 
 <body>
     <header>
-        <h4>Onde</h4>
-        <h4>Quando</h4>
-        <h4>Presentes</h4>
+        <h4 onclick="scrollInto('concept')">Conceito</h4>
+        <h4 onclick="scrollInto('where')">Onde</h4>
+        <h4 onclick="scrollInto('presents')">Presentes</h4>
     </header>
     <section class="main">
+        <!-- GREETING -->
         <div class="main__home">
             <h5 style="margin: 1.5rem auto 1.5rem auto" class="text--pink text--wrap text--center" id="greeting"></h5>
             <div class="main__home__square">
@@ -25,68 +26,77 @@
                 <h4>do Daniel e da Margarida</h4>
                 <hr>
                 </hr>
+                <h4 class="text--regular">30 de Maio, 2024</h4>
             </div>
-            <button class="main__home__confirm-btn">Confirmar</button>
+            <button class="main__home__confirm-btn" onclick="scrollInto('confirmation')">Confirmar</button>
             <img class="main__home__birds" src="./image.png" alt="Birds">
+        </div>
+
+        <!-- WHERE -->
+        <div id="concept" class="main__concept">
+            <h2>Conceito</h2>
+            <p class="text--regular">
+                Olá, bem-vindos ao nosso arraial!
+            </p>
+            <p> Num espaço histórico com quase 300 anos, agora reabilitado com um design minimalista,
+                preparamos uma festa inspirada num arraial português.</p>
+            <p> Num ambiente descontraído, entre a serra e o mar,
+                o nosso dia será uma celebração ao ar livre, rodeados daquilo que mais gostamos:
+                família, amigos e natureza.</p>
+        </div>
+        <!-- WHEN -->
+        <div id="where" class="main__where">
+            <h2>Onde</h2>
+            <h4 style="margin-left: 0;">Casa Milheira</h4>
+            <p>R. do Telhado 97, 3720-533 Oliveira de Azeméis</p>
+            <a class="hiperlink" href="https://www.google.com/maps/dir//R.+do+Telhado+97,+3720-533+Oliveira+de+Azem%C3%A9is/@40.84824,-8.5973125,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd2383a6ce9e17ff:0x4fa1985d9d77ad35!2m2!1d-8.5149116!2d40.848269?entry=ttu">Google Maps</a>
+            <div id="slider" class="main__slider">
+                <div class="main__slider__slide">
+                    <img class="main__images" src="./milheira1.jpg" alt="Imagem da casa">
+                </div>
+                <div class="main__slider__slide">
+                    <img class="main__images" src="./milheira2.jpg" alt="Imagem da casa">
+                </div>
+                <div class="main__slider__slide">
+                    <img class="main__images" src="./milheira3.jpg" alt="Imagem da casa">
+                </div>
+                <div class="main__slider__slide">
+                    <img class="main__images" src="./milheira4.jpg" alt="Imagem da casa">
+                </div>
+                <a class="prev" onclick="prevSlide()">&lt;</a>
+                <a class="next" onclick="nextSlide()">&gt;</a>
+            </div>
+        </div>
+        <!-- PRESENTS-->
+        <div id="presents" class="main__presents">
+            <h2>Presentes</h2>
+        </div>
+        <!-- CONFIRMATION -->
+        <div id="confirmation" class="main__confirmation">
+            <h2>Confirmação</h2>
+            <h4 class="text--regular">Por favor, confirma quem vai e clica em submeter.</h4>
         </div>
     </section>
 </body>
-<script>
-    const GUESTS = {
-        'paula': "Mamã",
-        'luis': "Luís",
-        'nuno': "Papá",
-        'alice': "Alice",
-        'nuno-miguel': 'Miguel',
-        'rozzy': 'Rozzy',
-        'natercia': 'Natércia',
-        'joao-paulo': 'João',
-        'sofia': 'Sofia',
-        'jorge': 'Jorge',
-        'paula-monteiro': 'Mamã',
-        'gusto': 'Papá',
-        'vovo': 'Vovó',
-        'tiago': 'Tiago',
-        'carlos': 'Carlos',
-        'tuxa': 'Tuxa',
-        'bela': 'Bela',
-        'joao-eng': 'João',
-        'rui': 'Rui',
-        'nani': 'Nani',
-        'miguel': 'Miguel',
-        'joao': 'João',
-        'beatriz': 'Beatriz',
-        'carina': 'Carina',
-        'hugo': 'Hugo',
-        'paulo': 'Paulo',
-        'raquel': 'Raquel',
-        'andre': 'André',
-        'joana': 'Joana',
-        'margarida': 'Margarida',
-        'mariana': 'Mariana',
-        'mimi': 'Mimi',
-        'mica': 'Micá',
-        'iolanda': 'Iolanda',
-        'ricardo': 'Ricardo',
-        'carlota': 'Carlota',
-        'andreia': 'Andreia',
-        'fernando': 'Fernando',
-        'lu': 'Lu',
-        'alex': 'Alex',
-        'catarina': 'Catarina'
-    }
-    function greetGuests() {
-        const guests = new URLSearchParams(window.location.search).get('guests').split(',');
-        let guestNames = [];
-        for (let param of guests.values()) {
-            if (GUESTS[param]) {
-                guestNames.push(GUESTS[param]);
-            }
-        }
-        document.getElementById('greeting').textContent =
-            `Olá, ${guestNames.join(' e ')}\nFicaremos muito felizes por vos receber`;
-    }
-    greetGuests()
+<script src="./main.js"></script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import {
+        getFirestore
+    } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyA4jyyFqixEQdN8qMeZqPrKdSVH17Q2_As",
+        authDomain: "arraial-c8f9c.firebaseapp.com",
+        projectId: "arraial-c8f9c",
+        storageBucket: "arraial-c8f9c.appspot.com",
+        messagingSenderId: "91283439296",
+        appId: "1:91283439296:web:ec9f70212425bed354b725",
+        measurementId: "G-5DN2CK14SJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getFirestore();
+    document.dispatchEvent(new CustomEvent('FirestoreInitialized', { detail: { database } }));
 </script>
 
 </html>

@@ -3,7 +3,7 @@ body {
     font-size: 16px;
     font-family: "Playfair Display", sans-serif;
     color: #2E6964;
-    margin: 0;
+    margin: 0 0 2rem 0;
 }
 
 header {
@@ -17,6 +17,11 @@ header {
 h1 {
     font-size: 3rem;
     margin: auto;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 h4 {
@@ -45,6 +50,10 @@ h5 {
     text-align: center;
 }
 
+.text--regular {
+    font-weight: 500;
+}
+
 /**MAIN**/
 
 .main__home {
@@ -64,13 +73,13 @@ h5 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .main__home__square hr {
     width: 60%;
     color: #2E6964;
     border: 1px solid #2E6964;
-    margin-bottom: 1rem;
 }
 
 .main__home__confirm-btn {
@@ -84,4 +93,65 @@ h5 {
     width: fit-content;
     padding: 0.25rem 0.5rem;
     margin-top: auto;
+}
+
+.main__where,
+.main__concept,
+.main__presents,
+.main__confirmation {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    justify-content: start;
+}
+
+.main__images {
+    border-radius: 0.5rem;
+}
+
+.main__slider {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.main__slider__slide {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0.6rem;
+}
+
+.main__images {
+    max-width: 100%;
+    height: auto;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.hiperlink {
+    color: #2E6964;
+    font-weight: 700;
+    margin: 0.5rem 0;
 }
