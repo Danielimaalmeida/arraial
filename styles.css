@@ -1,9 +1,15 @@
 body {
-    background-color: #FAF0E5;
+    background-color: #EFE9DF;
     font-size: 16px;
     font-family: "Playfair Display", sans-serif;
     color: #2E6964;
     margin: 0 0 2rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        margin: 0 10%;
+    }
 }
 
 header {
@@ -35,6 +41,11 @@ h5 {
     font-weight: 500;
 }
 
+.hover:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 
 /**UTILS**/
 
@@ -59,12 +70,28 @@ h5 {
 .main__home {
     display: flex;
     flex-direction: column;
-    height: calc(105vh);
+    height: calc(80vh);
     justify-content: space-between;
     align-items: center;
 }
 
-.main__home__birds {
+@media only screen and (max-width: 768px) {
+    .main__home__flags {
+      display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .main__home__flags--sm {
+      display: none;
+    }
+}
+
+.main__home__flags {
+    width: 100%;
+}
+
+.main__home__flags--sm {
     width: 100%;
 }
 
@@ -77,7 +104,7 @@ h5 {
 }
 
 .main__home__square hr {
-    width: 60%;
+    width: 14rem;
     color: #2E6964;
     border: 1px solid #2E6964;
 }
@@ -91,23 +118,21 @@ h5 {
     color: #FAF0E5;
     font-weight: bold;
     width: fit-content;
-    padding: 0.25rem 0.5rem;
+    padding: 0.75rem 0.75rem;
     margin-top: auto;
+    margin-bottom: 1rem;
 }
 
 .main__where,
 .main__concept,
-.main__presents,
+.main__when,
 .main__confirmation {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
     padding-bottom: 0;
     justify-content: start;
-}
-
-.main__images {
-    border-radius: 0.5rem;
+    min-height: 75vh;
 }
 
 .main__slider {
@@ -125,9 +150,17 @@ h5 {
     border-radius: 0.6rem;
 }
 
+
 .main__images {
     max-width: 100%;
     height: auto;
+    border-radius: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .main__slider {
+        width: 400px;
+    }
 }
 
 .prev,
@@ -155,3 +188,29 @@ h5 {
     font-weight: 700;
     margin: 0.5rem 0;
 }
+
+.main__home__confirmation__allergies {
+    background-color: #EFE9DF;
+    border: 1px solid #2E6964;
+    font-size: 16px;
+    font-family: "Playfair Display", sans-serif;
+    color: #2E6964;
+}
+
+.main__confirmation label,legend {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    outline: none;
+    border: 1px solid #2E6964;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #2E6964;
+}
+

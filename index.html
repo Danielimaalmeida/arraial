@@ -11,14 +11,14 @@
 
 <body>
     <header>
-        <h4 onclick="scrollInto('concept')">Conceito</h4>
-        <h4 onclick="scrollInto('where')">Onde</h4>
-        <h4 onclick="scrollInto('presents')">Presentes</h4>
+        <h4 class="hover" onclick="scrollInto('concept')">Conceito</h4>
+        <h4 class="hover" onclick="scrollInto('where')">Onde</h4>
+        <h4 class="hover" onclick="scrollInto('when')">Quando</h4>
     </header>
     <section class="main">
         <!-- GREETING -->
         <div class="main__home">
-            <h5 style="margin: 1.5rem auto 1.5rem auto" class="text--pink text--wrap text--center" id="greeting"></h5>
+            <h5 style="margin: 1.5rem auto 3rem auto" class="text--pink text--wrap text--center" id="greeting"></h5>
             <div class="main__home__square">
                 <hr>
                 </hr>
@@ -29,7 +29,8 @@
                 <h4 class="text--regular">30 de Maio, 2024</h4>
             </div>
             <button class="main__home__confirm-btn" onclick="scrollInto('confirmation')">Confirmar</button>
-            <img class="main__home__birds" src="./image.png" alt="Birds">
+            <img class="main__home__flags" src="./bandeiras.svg" alt="Bunting">
+            <img class="main__home__flags--sm" src="./bandeiras-sm.svg" alt="Bunting">
         </div>
 
         <!-- WHERE -->
@@ -42,8 +43,11 @@
                 preparamos uma festa inspirada num arraial português.</p>
             <p> Num ambiente descontraído, entre a serra e o mar,
                 o nosso dia será uma celebração ao ar livre, rodeados daquilo que mais gostamos:
-                família, amigos e natureza.</p>
+                família, amigos e natureza.</p>  
         </div>
+
+        <img class="main__home__flags" src="./bunting.svg" alt="Bunting">
+        <img class="main__home__flags--sm" src="./bunting-sm.svg" alt="Bunting">
         <!-- WHEN -->
         <div id="where" class="main__where">
             <h2>Onde</h2>
@@ -67,14 +71,33 @@
                 <a class="next" onclick="nextSlide()">&gt;</a>
             </div>
         </div>
-        <!-- PRESENTS-->
-        <div id="presents" class="main__presents">
-            <h2>Presentes</h2>
+        <img class="main__home__flags" src="./bunting.svg" alt="Bunting">
+        <img class="main__home__flags--sm" src="./bunting-sm.svg" alt="Bunting">
+        <!-- when-->
+        <div id="when" class="main__when">
+            <h2>Quando</h2>
+            <p class="text--regular">
+                O nosso arraial/celebração será no <strong>dia 30 de Maio.</strong>
+            </p>
+            <p>
+                Começará por volta das 15h da tarde.
+            </p>
+            <p>
+                Sim, nós sabemos que é uma quinta-feira, mas contamos que a maior parte das pessoas 
+                irá fazer ponte no dia seguinte. Caso não faças ponte, podes sempre pôr um dia de férias :)
+            </p>
         </div>
+        <img class="main__home__flags" src="./bunting.svg" alt="Bunting">
+        <img class="main__home__flags--sm" src="./bunting-sm.svg" alt="Bunting">
         <!-- CONFIRMATION -->
-        <div id="confirmation" class="main__confirmation">
+        <div id="confirmation" class="main__confirmation" style="height: 90vh">
             <h2>Confirmação</h2>
-            <h4 class="text--regular">Por favor, confirma quem vai e clica em submeter.</h4>
+            <fieldset id="confirmation-list" style="margin: 1rem 0;">
+                <legend>Convidados</legend>
+              </fieldset>
+            <label style="margin-top: auto;">Alergénios</label>
+            <textarea id="allergies" placeholder="Escreve aqui o alergénio a ter em conta." class="main__home__confirmation__allergies" name="allergies" rows="4"></textarea>
+            <button class="main__home__confirm-btn" style="margin: auto auto 3rem auto" onclick="handleSubmit()">Submeter</button>
         </div>
     </section>
 </body>
@@ -82,7 +105,7 @@
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
     import {
-        getFirestore
+        getFirestore, collection, addDoc
     } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
     const firebaseConfig = {
         apiKey: "AIzaSyA4jyyFqixEQdN8qMeZqPrKdSVH17Q2_As",
@@ -95,8 +118,8 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const database = getFirestore();
-    document.dispatchEvent(new CustomEvent('FirestoreInitialized', { detail: { database } }));
+    const database = collection(getFirestore(), 'guests');
+    document.dispatchEvent(new CustomEvent('FirestoreInitialized', { detail: { database, addDoc } }));
 </script>
 
 </html>
