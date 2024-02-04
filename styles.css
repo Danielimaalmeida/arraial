@@ -126,13 +126,19 @@ h5 {
 .main__where,
 .main__concept,
 .main__when,
-.main__confirmation {
+.main__confirmation,.main__goodbye {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
     padding-bottom: 0;
     justify-content: start;
     min-height: 75vh;
+}
+
+.main__goodbye {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .main__slider {
@@ -212,5 +218,9 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
     background-color: #2E6964;
+}
+
+.hidden {
+    display: none;
 }
 

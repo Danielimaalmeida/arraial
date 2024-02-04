@@ -62,8 +62,9 @@ function greetGuests() {
     }
   }
 
+  const guestsWithCommas = guestNames.map(v => v.name).join(', ').replace(/,([^,]*)$/, ' e' + '$1');
   document.getElementById('greeting').textContent =
-    `Olá, ${guestNames.map(v => v.name).join(', ')}\nFicaremos muito felizes por vos receber`;
+    `Olá, ${guestsWithCommas}\nFicaríamos muito felizes por vos receber!`;
 }
 
 document.addEventListener('FirestoreInitialized', (e) => {
@@ -130,6 +131,11 @@ function handleSubmit() {
       console.error("Error adding document: ", error);
     });
   })
+
+  const confirmation = document.getElementById('confirmation');
+  confirmation.classList.add('hidden');
+  const goodbye = document.getElementById('goodbye');
+  goodbye.classList.remove('hidden')
 }
 
 showSlide(currentSlide);
