@@ -17,7 +17,7 @@ const GUESTS = {
   'paula-monteiro': 'Mamã',
   'gusto': 'Papá',
   'tio-miguel': 'Miguel',
-  'joana': 'Joana',
+  'joana-costa': 'Joana',
   'lena': 'Titia Lena',
   'joao-coutinho': 'João',
   'vovo': 'Vovó',
